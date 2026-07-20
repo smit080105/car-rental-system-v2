@@ -15,6 +15,12 @@ export default function SignUp({ setIsLoggedIn }) {
   const handleSignUp = async (e) => {
     e.preventDefault();
     setError('');
+
+    if (!/^\d{10}$/.test(phone)) {
+      setError('Phone number must be exactly 10 digits');
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -134,7 +140,7 @@ export default function SignUp({ setIsLoggedIn }) {
               type="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              placeholder="Enter your phone"
+              placeholder="10-digit phone number"
               required
               style={{
                 width: '100%',

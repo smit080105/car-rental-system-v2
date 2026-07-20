@@ -61,8 +61,16 @@ export default function App() {
         <Route path="/fleet" element={isLoggedIn ? <Fleet /> : <Navigate to="/login" />} />
         <Route path="/bookings" element={isLoggedIn ? <Bookings /> : <Navigate to="/login" />} />
         <Route path="/" element={<Navigate to={isLoggedIn ? "/fleet" : "/login"} />} />
-        <Route path="*" element={<Navigate to={isLoggedIn ? "/fleet" : "/login"} />} />
-            </Routes>
+        <Route path="*" element={
+          <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#f5f5f5' }}>
+            <h1 style={{ color: '#1976d2', fontSize: '48px', margin: 0 }}>404</h1>
+            <p style={{ color: '#666', marginBottom: '20px' }}>Page not found</p>
+            <a href={isLoggedIn ? "/fleet" : "/login"} style={{ color: '#1976d2', fontWeight: 'bold', textDecoration: 'none' }}>
+              Go back home
+            </a>
+          </div>
+        } />
+      </Routes>
 
       <footer style={{
         textAlign: 'center',

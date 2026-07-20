@@ -12,6 +12,7 @@ export default function Fleet() {
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -119,10 +120,32 @@ export default function Fleet() {
     );
   }
 
+  const filteredCars = cars.filter((car) =>
+    car.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    car.brand.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div style={{ minHeight: '100vh', background: '#f5f5f5', padding: '40px 20px' }}>
-      <h1 style={{ color: '#1976d2', textAlign: 'center', marginBottom: '10px' }}>🚗 CAR RENTAL</h1>
+      <h1 style={{ color: '#333', textAlign: 'center', marginBottom: '10px' }}>🚗 CAR RENTAL</h1>
       <h2 style={{ color: '#666', textAlign: 'center', marginBottom: '30px', fontSize: '28px' }}>Our Fleet</h2>
+
+      <div style={{ maxWidth: '400px', margin: '0 auto 30px' }}>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search by car name or brand..."
+          style={{
+            width: '100%',
+            padding: '12px',
+            border: '1px solid #ddd',
+            borderRadius: '4px',
+            fontSize: '14px',
+            boxSizing: 'border-box'
+          }}
+        />
+      </div>
 
       {error && (
         <p style={{ color: '#d32f2f', textAlign: 'center', marginBottom: '20px', fontWeight: 'bold', fontSize: '16px' }}>
@@ -137,13 +160,13 @@ export default function Fleet() {
         gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
         gap: '20px'
       }}>
-        {cars.length === 0 && !error && (
+        {filteredCars.length === 0 && !error && (
           <p style={{ color: '#999', textAlign: 'center', gridColumn: '1 / -1' }}>
-            No cars available right now.
+            {searchTerm ? 'No cars match your search.' : 'No cars available right now.'}
           </p>
         )}
 
-        {cars.map((car) => (
+        {filteredCars.map((car) => (
           <div key={car.id} style={{
             background: '#fff',
             borderRadius: '8px',
