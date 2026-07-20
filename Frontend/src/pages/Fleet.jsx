@@ -121,7 +121,7 @@ export default function Fleet() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#f5f5f5', padding: '40px 20px' }}>
-      <h1 style={{ color: '#333', textAlign: 'center', marginBottom: '10px' }}>🚗 CAR RENTAL</h1>
+      <h1 style={{ color: '#1976d2', textAlign: 'center', marginBottom: '10px' }}>🚗 CAR RENTAL</h1>
       <h2 style={{ color: '#666', textAlign: 'center', marginBottom: '30px', fontSize: '28px' }}>Our Fleet</h2>
 
       {error && (
