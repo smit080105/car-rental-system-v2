@@ -62,7 +62,16 @@ export default function App() {
         <Route path="/bookings" element={isLoggedIn ? <Bookings /> : <Navigate to="/login" />} />
         <Route path="/" element={<Navigate to={isLoggedIn ? "/fleet" : "/login"} />} />
         <Route path="*" element={<Navigate to={isLoggedIn ? "/fleet" : "/login"} />} />
-      </Routes>
+            </Routes>
+
+      <footer style={{
+        textAlign: 'center',
+        padding: '20px',
+        color: '#999',
+        fontSize: '13px'
+      }}>
+        © 2026 Car Rental System
+      </footer>
     </>
   );
 }
