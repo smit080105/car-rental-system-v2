@@ -11,9 +11,10 @@ export default function Bookings() {
   const [cancellingId, setCancellingId] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchBookings();
-  }, []);
+ useEffect(() => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  fetchBookings();
+}, []);
 
   const fetchBookings = async () => {
     const token = localStorage.getItem('token');
