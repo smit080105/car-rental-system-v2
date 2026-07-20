@@ -32,7 +32,7 @@ export default function App() {
           alignItems: 'center',
           color: '#fff'
         }}>
-          <h2 style={{ margin: 0 }}>🚗 Car Rental v2</h2>
+          <h2 style={{ margin: 0 }}>🚗 Car Rental</h2>
           <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
             <a href="/fleet" style={{ color: '#fff', textDecoration: 'none', fontSize: '16px' }}>Fleet</a>
             <a href="/bookings" style={{ color: '#fff', textDecoration: 'none', fontSize: '16px' }}>Bookings</a>
